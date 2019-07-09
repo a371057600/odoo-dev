@@ -1,7 +1,11 @@
 {
     'name': 'Library Management',
     'description': 'Manage library book catalogue and lending.',
+<<<<<<< HEAD
     'author': 'Alan Hou',
+=======
+    'author': 'Mr.Wan',
+>>>>>>> 996b212b9cf130bb4bf032da74660547905d23f8
     'depends': ['base'],
     'application': True,
     'data': [
