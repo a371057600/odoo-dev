@@ -1,7 +1,7 @@
 {
     'name': 'Library Management',
     'description': 'Manage library book catalogue and lending.',
-    'author': 'Mr.Wan',
+    'author': 'Alan Hou',
     'depends': ['base'],
     'application': True,
     'data': [
@@ -10,5 +10,10 @@
         'views/library_menu.xml',  
         'views/book_view.xml',
         'views/book_list_template.xml',
+    ],
+    'demo': [
+        'data/res.partner.csv',
+        'data/library.book.csv',
+        'data/book_demo.xml',
     ],
 }
