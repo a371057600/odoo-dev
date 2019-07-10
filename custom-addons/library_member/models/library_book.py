@@ -1,13 +1,24 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 class Book(models.Model):
-
-    _inherit = 'library.book' # 使用_inherit类属性来声明所继承模型。
+    #  继承Model
+    _inherit = 'library.book'
+    #  <field.name> = fields.<field.type>(<field label>/<indexed>/<required>...)
+    is_available = fields.Boolean('Is Available?')
     isbn = fields.Char(help="Use a valid ISBN-13 or ISBN-10.")
     publisher_id = fields.Many2one(index=True)
-    """
-        _name是模型标识符，如果修改会发生什么呢？
-        其实你可以修改，这时它会创建所继承模型的拷贝，成为一个新模型。
-        这叫作原型继承，本文后面会讨论。
-    """
-    is_available = fields.Boolean('Is Available?')
+
+    # 
+    @api.multi
+    def _check_isbn(self):
+        self.ensure_one()
+        isbn = self.isbn.replace('-', '')
+        digits = [int(x) for x in isbn if x.isdigit()]
+        if len(digits) == 10:
+            ponderators = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            total = sum(a * b for a, b in zip(digits[:9], ponderators))
+            check = total % 11
+            return digits[-1] == check
+        else:
+            return super()._check_isbn()
+
