@@ -1,14 +1,11 @@
 from odoo import api, fields, models
 
 class Book(models.Model):
-    #  继承Model
     _inherit = 'library.book'
-    #  <field.name> = fields.<field.type>(<field label>/<indexed>/<required>...)
     is_available = fields.Boolean('Is Available?')
     isbn = fields.Char(help="Use a valid ISBN-13 or ISBN-10.")
     publisher_id = fields.Many2one(index=True)
 
-    # 
     @api.multi
     def _check_isbn(self):
         self.ensure_one()
