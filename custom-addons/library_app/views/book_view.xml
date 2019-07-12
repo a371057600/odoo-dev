@@ -1,15 +1,30 @@
 <?xml version="1.0"?>
 <odoo>
+    <!-- 所有的视图都存储在数据库ir.ui.view模型中
+         为模型添加视图，我们在 XML文件中声明<record>元素来描述视图
+         在模块安装时 XML 文件会被载入数据库 -->
+    <!-- ir.ui.view记录有三个字段值：name, model和 arch -->
+    <!-- 最重要的字段是arch，它包含了视图的定义，在 XML 代码中我们做了高亮显示
+         <form>标签定义了视图类型并包含视图结构 -->
     <record id="view_form_book" model="ir.ui.view">
         <field name="name">Book Form</field>
         <field name="model">library.book</field>
         <field name="arch" type="xml">
             <form string="Book">
                 <header>
+                    <!-- <header>来包含操作按钮 -->
+                    <!-- 一个按钮的基本属性有：
+                            - string：定义按钮显示文本
+                            - type：执行的操作类型
+                            - name：操作的标识符
+                            - class：应用 CSS 样式的可选属性，与 HTML 相同 -->
                     <button name="button_check_isbn" type="object"
                         string="Check ISBN" />
                 </header>
                 <sheet>
+                    <!-- <sheet>来包含数据字段 -->
+                    <!-- <group>标签可用于组织表单内
+                         在<group>元素内加<group>会在外层组中创建一个两列布局 -->
                     <group name="group_top">
                         <group name="group_left">
                             <field name="name" />

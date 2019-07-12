@@ -18,3 +18,7 @@ class TestBook(TransactionCase):
     def test_check_isbn(self):
         "Check valid ISBN"
         self.assertTrue(self.book_ode._check_isbn)
+
+# 使用–test-enable参数在安装或升级模块时进行测试
+# ~/odoo-dev/odoo/odoo-bin -d dev12 -u library_app --test-enable
+# 推荐为每个需检查的操作添加一个测试用例
