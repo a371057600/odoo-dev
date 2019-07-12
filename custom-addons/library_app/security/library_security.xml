@@ -1,8 +1,8 @@
+<?xml version="1.0" ?>
 <!-- 普通用户在使用功能前需获得相应的权限。
      Odoo 中使用安全组来实现，权限授予组，组中分配用户。
      Odoo 应用通常有两个组：
 针对普通用户的用户组，包含额外应用配置权限的管理员组。 -->
-<?xml version="1.0" ?>
 <odoo>
     <!-- 在ir.module.category模型中创建针对图书应用的分类 -->
     <record id="module_library_category" model="ir.module.category">
