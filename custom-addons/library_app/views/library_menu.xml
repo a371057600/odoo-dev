@@ -1,33 +1,28 @@
 <?xml version="1.0"?>
-<!-- 视图层为用户界面的描述，视图用 XML 定义
-     由网页客户端框架生成数据感知的 HTML 视图
-     可用菜单项开启渲染视图的操作
-     比如，Users 菜单项处理一个同样名为 Users 的操作，然后渲染一系列视图
-     有多种可用视图类型，如 list(因历史原因也称为 tree)列表视图和 form表单视图
-     以及包含过滤项的右上角搜索框由 search 搜索视图定义 -->
 <odoo>
-    <!-- 用户界面中的菜单项和操作均存储于数据表中，此处代码是一个 Odoo 数据文件，
-    描述了要载入 Odoo 数据库的记录 -->
-    
     <!-- Library App Menu -->
-    <!-- 向ir.ui.menu模型写入记录 -->
-    <!-- id 属性也称作XML ID，用于唯一标识每个数据元素，以供其它元素引用 -->
     <menuitem id="menu_library" name="Library" />
-    
     <!-- Action to open the Book list -->
-    <!-- <act_window>元素定义客户端窗口操作
-         它按顺序通过启用列表和表单视图打开library.book 模型 -->
     <act_window id="action_library_book"
         name="Library Books"
         res_model="library.book"
         view_mode="tree,form"
     />
-    
     <!-- Menu item to open the Book list -->
-    <!-- <menuitem>定义一个调用前面定义的action_library_book操作的顶级菜单项 -->
     <menuitem id="menu_library_book"
         name="Book"
         parent="menu_library"
         action="action_library_book"
     />
+
+    <!--act_window id="action_library_book_report"
+        name="Book Report"
+        res_model="library.book.report"
+        view_mode="tree,form"
+    />
+    <menuitem id="menu_library_book_report"
+        name="Book Report"
+        parent="menu_library"
+        action="action_library_book_report"
+    /-->
 </odoo>
